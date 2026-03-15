@@ -3,107 +3,78 @@
 import { motion } from "framer-motion";
 
 export default function Hero() {
-
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background - static, no heavy animations */}
+      {/* Background */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(201,168,76,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.3) 1px, transparent 1px)`,
-            backgroundSize: "80px 80px",
-          }}
-        />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-gold/5 blur-[120px]" />
         <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-deep-blue/15 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Badge */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8"
+          transition={{ duration: 0.4 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-10"
         >
-          <span className="w-2 h-2 rounded-full bg-gold animate-pulse-glow" />
-          <span className="text-sm text-gold font-medium tracking-wide">
+          <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+          <span className="text-sm text-gold font-medium">
             Empowering the Next Generation
           </span>
         </motion.div>
 
-        {/* Main heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl sm:text-7xl lg:text-[7rem] font-bold leading-[0.95] tracking-tight mb-8"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-10"
         >
           <span className="block text-white">Building</span>
           <span className="block gradient-text">Futures</span>
-          <span className="block text-white/40 text-3xl sm:text-5xl lg:text-6xl font-light mt-4">
-            Through Purpose & Opportunity
-          </span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-white/50 leading-relaxed mb-12"
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="max-w-lg mx-auto text-lg text-white/50 leading-relaxed mb-14"
         >
-          ABF and HBC work hand-in-hand to educate, develop, and create
-          real opportunities for young people from K-12 and beyond.
+          Education. Opportunity. Impact.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-5"
         >
-          <motion.a
+          <a
             href="#abf"
-            className="px-8 py-4 bg-gold text-black font-semibold rounded-full text-lg hover:bg-gold/90 transition-all"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(201,168,76,0.3)" }}
-            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 bg-gold text-black font-semibold rounded-full text-base hover:bg-gold/90 transition-all hover:scale-105 active:scale-95"
           >
-            Explore Our Programs
-          </motion.a>
-          <motion.a
-            href="#hbc"
-            className="px-8 py-4 border border-white/20 text-white font-medium rounded-full text-lg hover:border-white/40 hover:bg-white/5 transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            Our Programs
+          </a>
+          <a
+            href="#giveback"
+            className="px-8 py-4 border border-white/20 text-white font-medium rounded-full text-base hover:border-white/40 hover:bg-white/5 transition-all hover:scale-105 active:scale-95"
           >
-            How We Operate
-          </motion.a>
+            How We Give Back
+          </a>
         </motion.div>
+      </div>
 
-        {/* Scroll indicator */}
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="w-5 h-8 rounded-full border-2 border-white/20 flex items-start justify-center p-1"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-1.5 rounded-full bg-gold"
-            />
-          </motion.div>
+          <div className="w-1 h-1 rounded-full bg-gold" />
         </motion.div>
       </div>
     </section>

@@ -1,149 +1,117 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+const services = [
+  "NIL Strategy",
+  "Brand Building",
+  "Deal Negotiation",
+  "Financial Literacy",
+];
 
 export default function HPCSportsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
   return (
     <section id="hpc" className="relative py-40 overflow-hidden">
-      {/* Background */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-      <div className="absolute top-1/3 left-1/4 w-[600px] h-[400px] rounded-full bg-gold/[0.03] blur-[120px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          {/* Left side - Content */}
+      <div ref={ref} className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left - Content */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/20 bg-gold/5 mb-8"
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.35 }}
+              className="text-xs text-gold font-medium tracking-widest uppercase mb-6"
             >
-              <span className="text-xs text-gold font-medium tracking-widest uppercase">
-                High-Profile Consultancy
-              </span>
-            </motion.div>
+              High-Profile Consultancy
+            </motion.p>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
+              initial={{ opacity: 0, y: 15 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.35, delay: 0.05 }}
+              className="text-4xl sm:text-6xl font-bold tracking-tight mb-8"
             >
               <span className="gradient-text">HPC</span>
               <span className="text-white"> Sports</span>
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-lg text-white/50 leading-relaxed mb-12"
+              initial={{ opacity: 0, y: 15 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.35, delay: 0.1 }}
+              className="text-white/40 text-base mb-10 max-w-md"
             >
-              Navigating the world of Name, Image, and Likeness (NIL) for
-              student athletes. HPC Sports provides elite consultancy to help
-              young athletes maximize their potential&mdash;on and off the field.
+              Helping student athletes navigate NIL and maximize their potential.
             </motion.p>
 
-            <div className="space-y-6">
-              {[
-                {
-                  title: "NIL Strategy & Management",
-                  desc: "Comprehensive guidance on building and monetizing personal brand as a student athlete.",
-                },
-                {
-                  title: "Brand Development",
-                  desc: "Crafting authentic personal brands that resonate with audiences and attract partnerships.",
-                },
-                {
-                  title: "Deal Negotiation",
-                  desc: "Expert representation ensuring athletes get fair, impactful deals aligned with their values.",
-                },
-                {
-                  title: "Financial Literacy",
-                  desc: "Teaching athletes how to manage, invest, and grow the income from their NIL opportunities.",
-                },
-              ].map((item, i) => (
+            {/* Service pills */}
+            <div className="flex flex-wrap gap-3">
+              {services.map((service, i) => (
                 <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
-                  className="flex gap-5 p-5 rounded-2xl hover:bg-white/[0.02] transition-colors group"
+                  key={service}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.3, delay: 0.15 + i * 0.06 }}
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  className="px-5 py-2.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium cursor-default"
                 >
-                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                    <span className="text-gold text-sm font-bold">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1.5">
-                      {item.title}
-                    </h4>
-                    <p className="text-white/40 text-sm leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
+                  {service}
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Right side - Visual (lightweight) */}
+          {/* Right - NIL Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative hidden lg:block"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="relative hidden lg:flex items-center justify-center"
           >
-            <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Static rings */}
-              <div className="absolute inset-0 rounded-full border border-gold/10" />
-              <div className="absolute inset-12 rounded-full border border-gold/15" />
-              <div className="absolute inset-24 rounded-full border border-gold/20" />
+            <div className="relative w-80 h-80">
+              {/* Animated rings */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border border-gold/10"
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-8 rounded-full border border-gold/15"
+              >
+                <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-gold/60" />
+              </motion.div>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-16 rounded-full border border-gold/20"
+              >
+                <div className="absolute -bottom-1 right-4 w-2 h-2 rounded-full bg-gold/80" />
+              </motion.div>
 
-              {/* Center content */}
+              {/* Center */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-7xl sm:text-8xl font-black gradient-text mb-2">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.3, type: "spring" }}
+                    className="text-7xl font-black gradient-text"
+                  >
                     NIL
-                  </div>
-                  <p className="text-white/40 text-sm tracking-widest uppercase">
+                  </motion.div>
+                  <p className="text-white/30 text-[10px] tracking-[0.3em] uppercase mt-2">
                     Name &bull; Image &bull; Likeness
                   </p>
                 </div>
               </div>
-
-              {/* Corner labels */}
-              {[
-                { label: "Strategy", top: "10%", left: "10%" },
-                { label: "Branding", top: "10%", right: "10%" },
-                { label: "Growth", bottom: "10%", left: "10%" },
-                { label: "Deals", bottom: "10%", right: "10%" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="absolute px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/50"
-                  style={{
-                    top: item.top,
-                    left: item.left,
-                    right: item.right,
-                    bottom: item.bottom,
-                  }}
-                >
-                  {item.label}
-                </div>
-              ))}
-
-              {/* Accent dots on rings */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gold/40" />
-              <div className="absolute bottom-12 left-12 w-2 h-2 rounded-full bg-gold/60" />
-              <div className="absolute right-24 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-gold/80" />
             </div>
           </motion.div>
         </div>

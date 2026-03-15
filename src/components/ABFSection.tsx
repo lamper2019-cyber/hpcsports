@@ -5,54 +5,30 @@ import { useRef } from "react";
 
 const programs = [
   {
-    id: "rci",
-    tag: "K - 3rd Grade",
-    title: "Reading Comprehension Initiative",
+    tag: "K - 3",
+    title: "Reading Comprehension",
     acronym: "RCI",
-    description:
-      "Going directly into schools to transform how young learners engage with reading. Our RCI program builds strong foundational skills through interactive, hands-on reading comprehension support tailored for kindergarten through third grade.",
-    highlights: [
-      "In-school program delivery",
-      "Interactive reading workshops",
-      "Foundational literacy building",
-      "One-on-one student support",
-    ],
-    accentColor: "text-teal",
-    borderHover: "hover:border-teal/30",
+    color: "teal",
+    borderColor: "border-teal/30",
+    tagBg: "bg-teal/10 text-teal",
     dotColor: "bg-teal",
   },
   {
-    id: "ld",
-    tag: "4th - 8th Grade",
+    tag: "4 - 8",
     title: "Leadership & Development",
     acronym: "L&D",
-    description:
-      "Developing the soft skills that matter. Our Leadership & Development program focuses on research and development skills, communication, teamwork, and personal growth for middle school students ready to level up.",
-    highlights: [
-      "Soft skills development",
-      "Research & development projects",
-      "Team leadership exercises",
-      "Personal growth workshops",
-    ],
-    accentColor: "text-purple",
-    borderHover: "hover:border-purple/30",
+    color: "purple",
+    borderColor: "border-purple/30",
+    tagBg: "bg-purple/10 text-purple",
     dotColor: "bg-purple",
   },
   {
-    id: "cd",
-    tag: "9th - 12th Grade",
+    tag: "9 - 12",
     title: "Career Development",
     acronym: "CD",
-    description:
-      "Preparing high schoolers for the real world. Our Career Development program bridges the gap between education and employment, giving students the tools, mentorship, and exposure they need to launch their careers.",
-    highlights: [
-      "Career path exploration",
-      "Professional mentorship",
-      "Resume & interview prep",
-      "Industry exposure trips",
-    ],
-    accentColor: "text-orange",
-    borderHover: "hover:border-orange/30",
+    color: "orange",
+    borderColor: "border-orange/30",
+    tagBg: "bg-orange/10 text-orange",
     dotColor: "bg-orange",
   },
 ];
@@ -65,49 +41,29 @@ function ProgramCard({
   index: number;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-30px" });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.15 }}
-      className={`glass-card overflow-hidden transition-all duration-300 ${program.borderHover}`}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, x: 0, scale: 1 } : {}}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      className={`glass-card p-8 sm:p-10 cursor-default hover:${program.borderColor} transition-all duration-200`}
     >
-      <div className="p-8 sm:p-10">
-        {/* Tag */}
-        <div className="flex items-center justify-between mb-10">
-          <span
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase ${program.accentColor} bg-white/5 border border-white/10`}
-          >
-            {program.tag}
-          </span>
-          <span className={`text-4xl font-black ${program.accentColor} opacity-15`}>
-            {program.acronym}
-          </span>
-        </div>
-
-        {/* Title */}
-        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5 leading-tight">
-          {program.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-white/50 leading-relaxed mb-10 text-[15px]">
-          {program.description}
-        </p>
-
-        {/* Highlights */}
-        <div className="grid grid-cols-2 gap-4">
-          {program.highlights.map((highlight) => (
-            <div key={highlight} className="flex items-center gap-3">
-              <span className={`w-1.5 h-1.5 rounded-full ${program.dotColor} flex-shrink-0`} />
-              <span className="text-sm text-white/60">{highlight}</span>
-            </div>
-          ))}
-        </div>
+      <div className="flex items-center justify-between mb-8">
+        <span className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wider ${program.tagBg}`}>
+          {program.tag}
+        </span>
+        <span className={`text-5xl font-black text-${program.color} opacity-10`}>
+          {program.acronym}
+        </span>
       </div>
+
+      <h3 className="text-2xl font-bold text-white leading-tight">
+        {program.title}
+      </h3>
     </motion.div>
   );
 }
@@ -115,60 +71,48 @@ function ProgramCard({
 export default function ABFSection() {
   return (
     <section id="abf" className="relative py-40 overflow-hidden">
-      {/* Background */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8"
+            transition={{ duration: 0.35 }}
+            className="text-xs text-white/40 font-medium tracking-widest uppercase mb-6"
           >
-            <span className="text-xs text-white/60 font-medium tracking-widest uppercase">
-              ABF Programs
-            </span>
-          </motion.div>
+            ABF Programs
+          </motion.p>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
+            transition={{ duration: 0.35, delay: 0.05 }}
+            className="text-4xl sm:text-6xl font-bold tracking-tight"
           >
             <span className="text-white">Programs That </span>
             <span className="gradient-text">Transform</span>
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-lg text-white/50 leading-relaxed"
-          >
-            From the earliest readers to high school seniors, ABF meets students
-            where they are and takes them where they need to go. Three
-            specialized programs, one mission: unlocking potential.
-          </motion.p>
         </div>
 
-        {/* Age progression timeline */}
-        <div className="relative h-1 bg-white/5 rounded-full mb-20 mx-8 overflow-hidden">
+        {/* Timeline bar */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative h-1 bg-white/5 rounded-full mb-16 mx-4 origin-left overflow-hidden"
+        >
           <div className="absolute inset-0 bg-gradient-to-r from-teal via-purple to-orange rounded-full" />
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-3 h-3 rounded-full bg-teal border-2 border-black" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-purple border-2 border-black" />
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-3 h-3 rounded-full bg-orange border-2 border-black" />
-        </div>
+        </motion.div>
 
         {/* Program cards */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6">
           {programs.map((program, i) => (
-            <ProgramCard key={program.id} program={program} index={i} />
+            <ProgramCard key={program.acronym} program={program} index={i} />
           ))}
         </div>
       </div>
