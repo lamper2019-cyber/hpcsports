@@ -11,7 +11,7 @@ export default function TheModel() {
     <section id="model" className="relative py-32 sm:py-40 section-gradient">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
-      <div ref={ref} className="max-w-5xl mx-auto px-8">
+      <div ref={ref} className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
         <div className="text-center mb-20">
           <motion.h2

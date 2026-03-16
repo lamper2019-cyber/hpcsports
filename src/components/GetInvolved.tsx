@@ -34,7 +34,7 @@ export default function GetInvolved() {
     <section id="involved" className="relative py-32 sm:py-40 section-dark">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div ref={ref} className="max-w-5xl mx-auto px-8">
+      <div ref={ref} className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
         <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
@@ -61,7 +61,7 @@ export default function GetInvolved() {
               <p className="text-white/40 text-sm leading-relaxed mb-6">{path.desc}</p>
               <a
                 href="#"
-                className="inline-block px-6 py-2.5 text-sm font-semibold rounded-full bg-gold/10 text-gold border border-gold/20 hover:bg-gold hover:text-black transition-all duration-300 hover:scale-105"
+                className="inline-block px-5 py-2.5 bg-gold text-black font-semibold rounded-full text-sm hover:bg-gold-light transition-all"
               >
                 {path.cta}
               </a>

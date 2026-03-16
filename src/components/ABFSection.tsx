@@ -62,7 +62,7 @@ export default function ABFSection() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-gold/[0.02] blur-[150px]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-8">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
         <div className="text-center mb-20">
           <motion.p

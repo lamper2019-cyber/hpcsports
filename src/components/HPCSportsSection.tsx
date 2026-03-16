@@ -53,7 +53,7 @@ export default function HPCSportsSection() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
       <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[400px] rounded-full bg-gold/[0.03] blur-[140px]" />
 
-      <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-8">
+      <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.h2
@@ -93,7 +93,7 @@ export default function HPCSportsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.2 + i * 0.12 }}
-              className="glass-card p-8 group cursor-default hover:border-gold/20 transition-all duration-300"
+              className="glass-card p-6 sm:p-8 group cursor-default hover:border-gold/20 transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold/70 group-hover:text-gold group-hover:bg-gold/15 transition-all duration-300 mb-5">
                 {service.icon}

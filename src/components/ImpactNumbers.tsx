@@ -47,7 +47,7 @@ export default function ImpactNumbers() {
     <section id="impact" className="relative py-32 sm:py-40 section-gradient">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
-      <div ref={ref} className="max-w-5xl mx-auto px-8">
+      <div ref={ref} className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

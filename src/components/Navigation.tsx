@@ -27,7 +27,7 @@ export default function Navigation() {
           scrolled ? "bg-[#0a0f1a]/90 backdrop-blur-md border-b border-white/5" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 h-20 flex items-center justify-between">
           <a href="#hero" className="text-xl font-bold tracking-tight text-white">
             <span className="gradient-text">HPC</span> Sports
           </a>
