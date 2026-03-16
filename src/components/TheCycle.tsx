@@ -35,164 +35,128 @@ function StepCounter({ target, trigger, delay }: { target: number; trigger: bool
 
 function CycleLoop({ trigger }: { trigger: boolean }) {
   const [active, setActive] = useState(0);
-  const titles = ["Develop", "Employ", "Represent", "Reinvest"];
 
   useEffect(() => {
     if (!trigger) return;
     const startDelay = setTimeout(() => {
       const interval = setInterval(() => {
         setActive((prev) => (prev + 1) % 4);
-      }, 2000);
+      }, 2500);
       return () => clearInterval(interval);
-    }, 2500);
+    }, 2000);
     return () => clearTimeout(startDelay);
   }, [trigger]);
 
-  // SVG ring with 4 labels positioned around it
-  const radius = 90;
-  const cx = 140;
-  const cy = 140;
-  const circumference = 2 * Math.PI * radius;
-
-  // Positions: top, right, bottom, left
-  const positions = [
-    { x: cx, y: cy - radius - 20 },       // top
-    { x: cx + radius + 20, y: cy },         // right
-    { x: cx, y: cy + radius + 20 },         // bottom
-    { x: cx - radius - 20, y: cy },         // left
-  ];
-
   return (
-    <div className="flex flex-col items-center gap-6">
-      {/* Interactive cycle ring */}
-      <div className="relative" style={{ width: 280, height: 280 }}>
-        <svg width="280" height="280" viewBox="0 0 280 280" className="overflow-visible">
-          {/* Background ring */}
-          <circle
-            cx={cx}
-            cy={cy}
-            r={radius}
-            fill="none"
-            stroke="rgba(255,255,255,0.06)"
-            strokeWidth="2"
-          />
-          {/* Animated gold arc that follows active step */}
-          <motion.circle
-            cx={cx}
-            cy={cy}
-            r={radius}
-            fill="none"
-            stroke="url(#cycleGradient)"
-            strokeWidth="2.5"
-            strokeDasharray={circumference}
+    <div className="flex flex-col items-center gap-8">
+      {/* Horizontal pill-style cycle */}
+      <div className="flex items-center gap-0">
+        {steps.map((step, i) => {
+          const isActive = i === active;
+          return (
+            <div key={step.title} className="flex items-center">
+              {/* Node */}
+              <motion.div
+                animate={{
+                  scale: isActive ? 1.1 : 1,
+                  boxShadow: isActive
+                    ? "0 0 24px rgba(200,152,46,0.35), 0 0 48px rgba(200,152,46,0.15)"
+                    : "0 0 0px rgba(200,152,46,0)",
+                }}
+                transition={{ duration: 0.5 }}
+                className={`relative flex flex-col items-center justify-center rounded-2xl px-5 py-4 sm:px-6 sm:py-5 border transition-all duration-500 cursor-default ${
+                  isActive
+                    ? "bg-gold/10 border-gold/40"
+                    : "bg-white/[0.03] border-white/[0.06] hover:border-white/10"
+                }`}
+              >
+                <span className={`text-[10px] font-bold tracking-widest mb-1 transition-colors duration-500 ${isActive ? "text-gold" : "text-white/20"}`}>
+                  {String(step.num).padStart(2, "0")}
+                </span>
+                <span className={`text-sm sm:text-base font-bold transition-colors duration-500 ${isActive ? "text-gold" : "text-white/50"}`}>
+                  {step.title}
+                </span>
+              </motion.div>
+
+              {/* Arrow connector */}
+              {i < 3 && (
+                <div className="flex items-center px-2 sm:px-3">
+                  <motion.svg
+                    width="24"
+                    height="12"
+                    viewBox="0 0 24 12"
+                    fill="none"
+                    animate={{
+                      opacity: i === active ? 1 : 0.2,
+                    }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <path d="M0 6h20M16 1l5 5-5 5" stroke={i === active ? "#C8982E" : "#ffffff"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </motion.svg>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Return arrow curving back from Reinvest to Develop */}
+      <div className="w-full max-w-md">
+        <svg className="w-full h-6" viewBox="0 0 400 24" fill="none" preserveAspectRatio="xMidYMid meet">
+          <motion.path
+            d="M340 4 C370 4, 385 12, 370 20 L30 20 C15 20, 5 12, 30 4"
+            stroke="url(#loopGrad)"
+            strokeWidth="1.5"
             strokeLinecap="round"
-            initial={{ strokeDashoffset: circumference }}
-            animate={{
-              strokeDashoffset: circumference - (circumference / 4) * (active + 1),
-              rotate: -90,
-            }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            style={{ transformOrigin: `${cx}px ${cy}px` }}
+            fill="none"
+            strokeDasharray="700"
+            initial={{ strokeDashoffset: 700 }}
+            animate={trigger ? { strokeDashoffset: 0 } : {}}
+            transition={{ duration: 1.5, delay: 1.5, ease: "easeInOut" }}
           />
-
-          {/* Arrow dots at each position */}
-          {positions.map((pos, i) => {
-            const nextPos = positions[(i + 1) % 4];
-            const midX = (pos.x + nextPos.x) / 2;
-            const midY = (pos.y + nextPos.y) / 2;
-            // Offset midpoint toward center for curve feel
-            const towardCx = (midX + cx) / 2;
-            const towardCy = (midY + cy) / 2;
-            return (
-              <motion.line
-                key={`arrow-${i}`}
-                x1={pos.x > cx ? pos.x - 8 : pos.x < cx ? pos.x + 8 : pos.x}
-                y1={pos.y > cy ? pos.y - 8 : pos.y < cy ? pos.y + 8 : pos.y}
-                x2={towardCx}
-                y2={towardCy}
-                stroke={i === active ? "#C8982E" : "rgba(255,255,255,0.1)"}
-                strokeWidth="1"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-              />
-            );
-          })}
-
+          <motion.polygon
+            points="26,0 36,4 26,8"
+            fill="#C8982E"
+            initial={{ opacity: 0 }}
+            animate={trigger ? { opacity: 0.7 } : {}}
+            transition={{ delay: 3 }}
+          />
           <defs>
-            <linearGradient id="cycleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#C8982E" />
-              <stop offset="50%" stopColor="#E0B94E" />
-              <stop offset="100%" stopColor="#C8982E" />
+            <linearGradient id="loopGrad" x1="100%" y1="0%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="#C8982E" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#E0B94E" stopOpacity="0.3" />
             </linearGradient>
           </defs>
         </svg>
-
-        {/* Labels at each position */}
-        {titles.map((title, i) => {
-          const isActive = i === active;
-          // Position labels outside the ring
-          const labelStyles: React.CSSProperties[] = [
-            { top: -4, left: "50%", transform: "translateX(-50%)" },   // top
-            { top: "50%", right: -16, transform: "translateY(-50%)" },  // right
-            { bottom: -4, left: "50%", transform: "translateX(-50%)" }, // bottom
-            { top: "50%", left: -16, transform: "translateY(-50%)" },   // left
-          ];
-
-          return (
-            <motion.div
-              key={title}
-              className="absolute"
-              style={labelStyles[i]}
-              animate={{
-                scale: isActive ? 1.15 : 1,
-              }}
-              transition={{ duration: 0.4 }}
-            >
-              <span
-                className={`text-xs sm:text-sm font-bold tracking-wide transition-all duration-500 ${
-                  isActive ? "text-gold" : "text-white/30"
-                }`}
-              >
-                {title}
-              </span>
-            </motion.div>
-          );
-        })}
-
-        {/* Center content */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3 }}
-              className="text-center px-4"
-            >
-              <p className="gradient-text font-bold text-lg">{String(active + 1).padStart(2, "0")}</p>
-              <p className="text-white/40 text-[11px] leading-tight mt-1 max-w-[120px]">
-                {steps[active].desc.split(".")[0]}.
-              </p>
-            </motion.div>
-          </AnimatePresence>
-        </div>
       </div>
 
-      {/* Minimal label */}
+      {/* Active step description */}
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={active}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3 }}
+          className="text-white/35 text-sm text-center max-w-sm"
+        >
+          {steps[active].desc}
+        </motion.p>
+      </AnimatePresence>
+
+      {/* Spinning icon */}
       <div className="flex items-center gap-2">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-          className="text-gold"
+          className="text-gold/60"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
             <path d="M1 4v6h6" />
             <path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
           </svg>
         </motion.div>
-        <span className="text-white/40 font-medium text-sm">The cycle never stops.</span>
+        <span className="text-white/30 font-medium text-xs tracking-wide">The cycle never stops</span>
       </div>
     </div>
   );
