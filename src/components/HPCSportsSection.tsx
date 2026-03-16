@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 const services = [
   {
@@ -56,14 +57,14 @@ export default function HPCSportsSection() {
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4 }}
-            className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight mb-3"
+            className="mb-3"
           >
-            <span className="gradient-text">HPC</span> Sports
-          </motion.h2>
+            <Image src="/hpc-logo.png" alt="HPC Sports" width={280} height={120} className="mx-auto w-[180px] sm:w-[240px] lg:w-[280px] h-auto" />
+          </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

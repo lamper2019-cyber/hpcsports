@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navLinks = [
   { label: "The Model", href: "#model" },
@@ -31,8 +32,8 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 h-20 flex items-center justify-between">
-          <a href="#hero" className="text-xl font-bold tracking-tight text-white">
-            <span className="gradient-text">HPC</span> Sports
+          <a href="#hero" className="flex items-center">
+            <Image src="/hpc-logo.png" alt="HPC Sports" width={120} height={48} className="h-8 sm:h-10 w-auto" />
           </a>
 
           <div className="hidden md:flex items-center gap-2">
