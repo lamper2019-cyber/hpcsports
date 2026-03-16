@@ -48,7 +48,7 @@ function CycleLoop({ trigger }: { trigger: boolean }) {
   }, [trigger]);
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center gap-6">
       {/* Horizontal pill-style cycle */}
       <div className="flex items-center gap-0">
         {steps.map((step, i) => {
@@ -58,22 +58,22 @@ function CycleLoop({ trigger }: { trigger: boolean }) {
               {/* Node */}
               <motion.div
                 animate={{
-                  scale: isActive ? 1.1 : 1,
+                  scale: isActive ? 1.08 : 1,
                   boxShadow: isActive
-                    ? "0 0 24px rgba(200,152,46,0.35), 0 0 48px rgba(200,152,46,0.15)"
+                    ? "0 0 30px rgba(200,152,46,0.4), 0 0 60px rgba(200,152,46,0.15)"
                     : "0 0 0px rgba(200,152,46,0)",
                 }}
                 transition={{ duration: 0.5 }}
                 className={`relative flex flex-col items-center justify-center rounded-2xl px-5 py-4 sm:px-6 sm:py-5 border transition-all duration-500 cursor-default ${
                   isActive
-                    ? "bg-gold/10 border-gold/40"
-                    : "bg-white/[0.03] border-white/[0.06] hover:border-white/10"
+                    ? "bg-gold/15 border-gold/50"
+                    : "bg-navy-light/40 border-white/[0.12]"
                 }`}
               >
-                <span className={`text-[10px] font-bold tracking-widest mb-1 transition-colors duration-500 ${isActive ? "text-gold" : "text-white/20"}`}>
+                <span className={`text-[10px] font-bold tracking-widest mb-1 transition-colors duration-500 ${isActive ? "text-gold-light" : "text-white/40"}`}>
                   {String(step.num).padStart(2, "0")}
                 </span>
-                <span className={`text-sm sm:text-base font-bold transition-colors duration-500 ${isActive ? "text-gold" : "text-white/50"}`}>
+                <span className={`text-sm sm:text-base font-bold transition-colors duration-500 ${isActive ? "text-white" : "text-white/60"}`}>
                   {step.title}
                 </span>
               </motion.div>
@@ -87,47 +87,17 @@ function CycleLoop({ trigger }: { trigger: boolean }) {
                     viewBox="0 0 24 12"
                     fill="none"
                     animate={{
-                      opacity: i === active ? 1 : 0.2,
+                      opacity: i === active ? 1 : 0.35,
                     }}
                     transition={{ duration: 0.5 }}
                   >
-                    <path d="M0 6h20M16 1l5 5-5 5" stroke={i === active ? "#C8982E" : "#ffffff"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M0 6h20M16 1l5 5-5 5" stroke={i === active ? "#E0B94E" : "#ffffff"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </motion.svg>
                 </div>
               )}
             </div>
           );
         })}
-      </div>
-
-      {/* Return arrow curving back from Reinvest to Develop */}
-      <div className="w-full max-w-md">
-        <svg className="w-full h-6" viewBox="0 0 400 24" fill="none" preserveAspectRatio="xMidYMid meet">
-          <motion.path
-            d="M340 4 C370 4, 385 12, 370 20 L30 20 C15 20, 5 12, 30 4"
-            stroke="url(#loopGrad)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            fill="none"
-            strokeDasharray="700"
-            initial={{ strokeDashoffset: 700 }}
-            animate={trigger ? { strokeDashoffset: 0 } : {}}
-            transition={{ duration: 1.5, delay: 1.5, ease: "easeInOut" }}
-          />
-          <motion.polygon
-            points="26,0 36,4 26,8"
-            fill="#C8982E"
-            initial={{ opacity: 0 }}
-            animate={trigger ? { opacity: 0.7 } : {}}
-            transition={{ delay: 3 }}
-          />
-          <defs>
-            <linearGradient id="loopGrad" x1="100%" y1="0%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#C8982E" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#E0B94E" stopOpacity="0.3" />
-            </linearGradient>
-          </defs>
-        </svg>
       </div>
 
       {/* Active step description */}
@@ -138,25 +108,25 @@ function CycleLoop({ trigger }: { trigger: boolean }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.3 }}
-          className="text-white/35 text-sm text-center max-w-sm"
+          className="text-white/70 text-sm sm:text-base text-center max-w-md font-medium"
         >
           {steps[active].desc}
         </motion.p>
       </AnimatePresence>
 
       {/* Spinning icon */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2.5">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-          className="text-gold/60"
+          className="text-gold"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
             <path d="M1 4v6h6" />
             <path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
           </svg>
         </motion.div>
-        <span className="text-white/30 font-medium text-xs tracking-wide">The cycle never stops</span>
+        <span className="text-white/50 font-semibold text-sm tracking-wide">The cycle never stops</span>
       </div>
     </div>
   );
@@ -188,7 +158,7 @@ export default function TheCycle() {
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-white/40 text-lg"
+            className="text-white/50 text-lg"
           >
             Every dollar HPC earns comes back to the community.
           </motion.p>
@@ -223,8 +193,8 @@ export default function TheCycle() {
                     <StepCounter target={step.num} trigger={isInView} delay={200 + i * 150} />
                   </span>
                 </motion.div>
-                <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                <p className="text-white/55 text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
