@@ -20,7 +20,7 @@ export default function TheCycle() {
     const startDelay = setTimeout(() => {
       const interval = setInterval(() => {
         setActive((prev) => (prev + 1) % 4);
-      }, 2500);
+      }, 3500);
       return () => clearInterval(interval);
     }, 1500);
     return () => clearTimeout(startDelay);
