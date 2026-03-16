@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Give Back", href: "#giveback" },
-  { label: "Programs", href: "#abf" },
-  { label: "NIL", href: "#hpc" },
+  { label: "The Model", href: "#model" },
+  { label: "Programs", href: "#programs" },
+  { label: "HPC Sports", href: "#hpc" },
   { label: "Impact", href: "#impact" },
+  { label: "Get Involved", href: "#involved" },
 ];
 
 export default function Navigation() {
@@ -26,14 +26,13 @@ export default function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-black/80 backdrop-blur-xl border-b border-white/5"
+            ? "bg-navy/95 backdrop-blur-md shadow-lg"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <a href="#hero" className="text-2xl font-bold tracking-tight">
-            <span className="gradient-text">HPC</span>
-            <span className="text-white ml-2">Sports</span>
+          <a href="#hero" className="text-xl font-bold tracking-tight text-white">
+            HPC Sports
           </a>
 
           <div className="hidden md:flex items-center gap-1">
@@ -41,16 +40,16 @@ export default function Navigation() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm text-white/60 hover:text-white transition-colors"
+                className="px-4 py-2 text-sm text-white/70 hover:text-white transition-colors"
               >
                 {link.label}
               </a>
             ))}
             <a
-              href="#contact"
-              className="ml-4 px-6 py-2.5 text-sm font-medium bg-gold text-black rounded-full hover:bg-gold/90 transition-colors"
+              href="#involved"
+              className="ml-4 px-6 py-2.5 text-sm font-semibold bg-gold text-white rounded-full hover:bg-gold-light transition-colors"
             >
-              Get Involved
+              Join Us
             </a>
           </div>
 
@@ -81,7 +80,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-black/95 pt-24 px-8 md:hidden"
+            className="fixed inset-0 z-40 bg-navy/98 pt-24 px-8 md:hidden"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link, i) => (

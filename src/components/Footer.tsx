@@ -2,57 +2,36 @@
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative pt-20 pb-10">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
+    <footer className="bg-navy py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
-          {/* Brand */}
+        <div className="grid md:grid-cols-3 gap-12 items-start mb-12">
+          {/* Left: Brand */}
           <div>
-            <div className="text-2xl font-bold mb-4">
-              <span className="gradient-text">HPC</span>
-              <span className="text-white ml-2">Sports</span>
-            </div>
-            <p className="text-white/40 text-sm leading-relaxed">
-              Empowering the next generation from K-12 and beyond.
+            <p className="text-white font-bold text-lg mb-2">
+              HPC Sports &times; Alabama Boys Foundation
+            </p>
+            <p className="text-white/40 text-sm">
+              Montgomery, Alabama
             </p>
           </div>
 
-          {/* Programs */}
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-xs tracking-widest uppercase">
-              Programs
-            </h4>
-            <div className="space-y-2.5">
-              {[
-                "Reading Comprehension (K-3)",
-                "Leadership & Dev (4-8)",
-                "Career Development (9-12)",
-                "HPC Sports NIL",
-              ].map((link) => (
-                <a key={link} href="#abf" className="block text-white/40 hover:text-white/70 transition-colors text-sm">
-                  {link}
-                </a>
-              ))}
-            </div>
+          {/* Center: Tagline */}
+          <div className="text-center">
+            <p className="text-gold font-medium text-sm tracking-wide">
+              Building Character. Building Confidence. Building Futures.
+            </p>
           </div>
 
-          {/* Get Involved */}
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-xs tracking-widest uppercase">
-              Get Involved
-            </h4>
-            <div className="space-y-2.5">
-              {["Partner Schools", "Internships", "Volunteer", "Donate"].map((link) => (
-                <a key={link} href="#" className="block text-white/40 hover:text-white/70 transition-colors text-sm">
-                  {link}
-                </a>
-              ))}
-            </div>
+          {/* Right: Links */}
+          <div className="flex flex-wrap gap-x-8 gap-y-2 md:justify-end">
+            <a href="#programs" className="text-white/50 hover:text-white text-sm transition-colors">Programs</a>
+            <a href="#hpc" className="text-white/50 hover:text-white text-sm transition-colors">HPC Sports</a>
+            <a href="#involved" className="text-white/50 hover:text-white text-sm transition-colors">Get Involved</a>
+            <a href="#impact" className="text-white/50 hover:text-white text-sm transition-colors">Impact</a>
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-sm">
             &copy; {new Date().getFullYear()} HPC Sports. All rights reserved.
           </p>

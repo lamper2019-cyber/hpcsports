@@ -1,20 +1,24 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import HBCSection from "@/components/HBCSection";
+import TheModel from "@/components/TheModel";
 import ABFSection from "@/components/ABFSection";
 import HPCSportsSection from "@/components/HPCSportsSection";
-import ImpactSection from "@/components/ImpactSection";
+import TheCycle from "@/components/TheCycle";
+import ImpactNumbers from "@/components/ImpactNumbers";
+import GetInvolved from "@/components/GetInvolved";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-black min-h-screen">
+    <main>
       <Navigation />
       <Hero />
-      <HBCSection />
+      <TheModel />
       <ABFSection />
       <HPCSportsSection />
-      <ImpactSection />
+      <TheCycle />
+      <ImpactNumbers />
+      <GetInvolved />
       <Footer />
     </main>
   );
