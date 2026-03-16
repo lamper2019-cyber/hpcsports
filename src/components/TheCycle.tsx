@@ -7,7 +7,7 @@ const steps = [
   { num: 1, title: "Develop", desc: "ABF programs build skills, confidence, and character in young men K\u201312." },
   { num: 2, title: "Employ", desc: "HPC hires interns and young professionals, creating real jobs and career pathways." },
   { num: 3, title: "Represent", desc: "HPC manages NIL deals for student athletes, generating revenue through brand partnerships." },
-  { num: 4, title: "Reinvest", desc: "Revenue from HPC funds ABF\u2019s programs, expanding reach to more schools and students." },
+  { num: 4, title: "Reinvest", desc: "HPC helps expand ABF\u2019s opportunities, bringing programs to more schools and more students." },
 ];
 
 function StepCounter({ target, trigger, delay }: { target: number; trigger: boolean; delay: number }) {

@@ -122,7 +122,7 @@ export default function TheModel() {
               <h3 className="text-2xl font-bold text-white mb-4">Alabama Boys Foundation</h3>
               <p className="text-white/50 leading-relaxed">
                 The mission arm. We develop young men K&ndash;12 through reading programs,
-                leadership training, and career preparation &mdash; funded by the work HPC does.
+                leadership training, and career preparation.
               </p>
             </motion.div>
           </div>
