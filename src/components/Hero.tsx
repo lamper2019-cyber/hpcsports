@@ -28,28 +28,10 @@ export default function Hero() {
           />
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-8"
-        >
-          <span className="gradient-text">&times;</span> Alabama Boys Foundation
-        </motion.h1>
-
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-lg sm:text-xl text-white/60 leading-relaxed mb-8 max-w-2xl mx-auto"
-        >
-          One agency. One mission. Developing young men from kindergarten through the pros.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="text-base sm:text-lg gradient-text font-semibold tracking-wide mb-14"
         >
           Building Character. Building Confidence. Building Futures.
@@ -58,7 +40,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-5"
         >
           <a href="#programs" className="px-8 py-4 bg-gold text-black font-semibold rounded-full text-base hover:bg-gold-light transition-all hover:scale-105 active:scale-95">

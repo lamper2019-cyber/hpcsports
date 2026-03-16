@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 
 const services = [
   {
@@ -57,22 +56,14 @@ export default function HPCSportsSection() {
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <motion.div
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4 }}
-            className="mb-3"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6"
           >
-            <Image src="/hpc-logo.png" alt="HPC Sports" width={280} height={120} className="mx-auto w-[180px] sm:w-[240px] lg:w-[280px] h-auto" />
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-gold text-base font-medium tracking-wide mb-8"
-          >
-            Full-Service NIL Agency for Student Athletes
-          </motion.p>
+            We Are a Full-Service NIL Agency for Student Athletes
+          </motion.h2>
         </div>
 
         {/* Giant NIL with shimmer */}
@@ -80,24 +71,12 @@ export default function HPCSportsSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center mb-8"
+          className="text-center mb-20"
         >
           <span className="shimmer-text text-[100px] sm:text-[130px] lg:text-[150px] font-black leading-none tracking-tighter select-none">
             NIL
           </span>
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="text-white/45 leading-relaxed text-base max-w-2xl mx-auto text-center mb-20"
-        >
-          HPC Sports is the operating arm &mdash; a sports consultancy and NIL agency
-          that represents student athletes, negotiates brand partnerships, and builds
-          personal brands. We also employ young adults from our community, creating a
-          pipeline from ABF&apos;s programs into real careers.
-        </motion.p>
 
         {/* 2x2 grid with glassmorphism */}
         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
