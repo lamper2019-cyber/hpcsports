@@ -8,81 +8,84 @@ export default function TheModel() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="model" className="relative py-28 sm:py-36 bg-gray">
-      <div ref={ref} className="max-w-6xl mx-auto px-6">
+    <section id="model" className="relative py-32 sm:py-40 section-gradient">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+      <div ref={ref} className="max-w-5xl mx-auto px-8">
         {/* Header */}
         <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-navy tracking-tight mb-4"
+            className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight mb-4"
           >
-            Two Sides. One Mission.
+            Two Sides. <span className="gradient-text">One Mission.</span>
           </motion.h2>
         </div>
 
         {/* Two cards */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {/* HPC Sports card */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {/* HPC Sports */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="card-navy p-8 sm:p-10"
+            className="glass-card p-8 sm:p-10"
           >
-            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-6">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7 text-gold">
                 <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
                 <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">HPC Sports</h3>
-            <p className="text-white/60 leading-relaxed">
+            <p className="text-white/50 leading-relaxed">
               The agency arm. We represent student athletes, manage NIL deals, build
               brands, and create employment opportunities for young adults in our community.
             </p>
           </motion.div>
 
-          {/* ABF card */}
+          {/* ABF */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="card p-8 sm:p-10 border-l-4 border-l-gold"
+            className="glass-card-gold p-8 sm:p-10"
           >
-            <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-6">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7 text-gold">
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                 <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-navy mb-4">Alabama Boys Foundation</h3>
-            <p className="text-navy/60 leading-relaxed">
+            <h3 className="text-2xl font-bold text-white mb-4">Alabama Boys Foundation</h3>
+            <p className="text-white/50 leading-relaxed">
               The mission arm. We develop young men K&ndash;12 through reading programs,
               leadership training, and career preparation &mdash; funded by the work HPC does.
             </p>
           </motion.div>
         </div>
 
-        {/* Connecting statement */}
+        {/* Connector */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-center"
         >
-          {/* Arrow connector */}
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex items-center justify-center gap-4 mb-5">
             <div className="h-px w-16 bg-gold/30" />
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-gold">
-              <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <div className="w-8 h-8 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-gold">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
             <div className="h-px w-16 bg-gold/30" />
           </div>
-          <p className="text-lg sm:text-xl text-navy/70 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-white/50 max-w-xl mx-auto">
             HPC generates opportunity. ABF develops the next generation.{" "}
-            <span className="text-gold font-semibold">The cycle never stops.</span>
+            <span className="gradient-text font-semibold">The cycle never stops.</span>
           </p>
         </motion.div>
       </div>

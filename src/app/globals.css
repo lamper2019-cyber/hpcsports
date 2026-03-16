@@ -5,8 +5,6 @@
   --navy-light: #243556;
   --gold: #C8982E;
   --gold-light: #E0B94E;
-  --white: #FFFFFF;
-  --gray: #F5F6F8;
 }
 
 @theme inline {
@@ -14,7 +12,6 @@
   --color-navy-light: var(--navy-light);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
-  --color-gray: var(--gray);
   --font-sans: var(--font-inter);
 }
 
@@ -29,30 +26,29 @@ html {
 }
 
 body {
-  background: var(--white);
-  color: var(--navy);
+  background: #0a0f1a;
+  color: #fff;
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
 ::selection {
   background: var(--gold);
-  color: var(--white);
+  color: #000;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--navy);
+  background: #0a0f1a;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--gold);
   border-radius: 3px;
 }
 
-/* Gradient text utility */
+/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
   -webkit-background-clip: text;
@@ -60,37 +56,34 @@ body {
   background-clip: text;
 }
 
-/* Card styles */
-.card {
-  background: var(--white);
-  border: 1px solid rgba(27, 42, 74, 0.08);
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  transition: all 0.3s ease;
-}
-.card:hover {
-  box-shadow: 0 8px 30px rgba(27, 42, 74, 0.08);
-  transform: translateY(-4px);
 }
 
-/* Navy card */
-.card-navy {
+/* Gold accent glass card */
+.glass-card-gold {
+  background: rgba(200, 152, 46, 0.06);
+  border: 1px solid rgba(200, 152, 46, 0.15);
+  border-radius: 20px;
+}
+
+/* Glow */
+.glow-gold {
+  box-shadow: 0 0 60px rgba(200, 152, 46, 0.1), 0 0 120px rgba(200, 152, 46, 0.05);
+}
+
+/* Section bg */
+.section-dark {
+  background: #0a0f1a;
+}
+
+.section-navy {
   background: var(--navy);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 20px;
 }
 
-/* Gold left border card */
-.card-gold-border {
-  background: var(--white);
-  border: 1px solid rgba(27, 42, 74, 0.08);
-  border-left: 4px solid var(--gold);
-  border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-
-/* Counter animation helper */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.section-gradient {
+  background: linear-gradient(180deg, #0a0f1a 0%, #111827 50%, #0a0f1a 100%);
 }
