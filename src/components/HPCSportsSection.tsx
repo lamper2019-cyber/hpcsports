@@ -55,7 +55,7 @@ export default function HPCSportsSection() {
 
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -72,20 +72,33 @@ export default function HPCSportsSection() {
           >
             Full-Service NIL Agency for Student Athletes
           </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-white/45 leading-relaxed text-base max-w-2xl mx-auto"
-          >
-            HPC Sports is the operating arm &mdash; a sports consultancy and NIL agency
-            that represents student athletes, negotiates brand partnerships, and builds
-            personal brands. We also employ young adults from our community, creating a
-            pipeline from ABF&apos;s programs into real careers.
-          </motion.p>
         </div>
 
-        {/* 2x2 grid */}
+        {/* Giant NIL with shimmer */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center mb-8"
+        >
+          <span className="shimmer-text text-[100px] sm:text-[130px] lg:text-[150px] font-black leading-none tracking-tighter select-none">
+            NIL
+          </span>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.15 }}
+          className="text-white/45 leading-relaxed text-base max-w-2xl mx-auto text-center mb-20"
+        >
+          HPC Sports is the operating arm &mdash; a sports consultancy and NIL agency
+          that represents student athletes, negotiates brand partnerships, and builds
+          personal brands. We also employ young adults from our community, creating a
+          pipeline from ABF&apos;s programs into real careers.
+        </motion.p>
+
+        {/* 2x2 grid with glassmorphism */}
         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {services.map((service, i) => (
             <motion.div
@@ -93,7 +106,11 @@ export default function HPCSportsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.2 + i * 0.12 }}
-              className="glass-card p-6 sm:p-8 group cursor-default hover:border-gold/20 transition-all duration-300"
+              whileHover={{
+                y: -4,
+                boxShadow: "0 0 40px rgba(200, 152, 46, 0.12), 0 0 80px rgba(200, 152, 46, 0.06)",
+              }}
+              className="glass-morph p-6 sm:p-8 group cursor-default hover:border-gold/20 transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold/70 group-hover:text-gold group-hover:bg-gold/15 transition-all duration-300 mb-5">
                 {service.icon}

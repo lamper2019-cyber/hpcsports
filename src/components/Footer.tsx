@@ -1,8 +1,16 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function Footer() {
   return (
-    <footer className="relative py-16 bg-[#060a12]">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="relative py-16 bg-[#060a12]"
+    >
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
@@ -32,6 +40,6 @@ export default function Footer() {
           <p className="text-white/15 text-xs">Empowering the Next Generation</p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

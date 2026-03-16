@@ -22,7 +22,10 @@ export default function Navigation() {
 
   return (
     <>
-      <nav
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? "bg-[#0a0f1a]/90 backdrop-blur-md border-b border-white/5" : "bg-transparent"
         }`}
@@ -33,14 +36,27 @@ export default function Navigation() {
           </a>
 
           <div className="hidden md:flex items-center gap-2">
-            {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="px-4 py-2 text-sm text-white/50 hover:text-white transition-colors">
+            {navLinks.map((link, i) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
+                className="px-4 py-2 text-sm text-white/50 hover:text-white transition-colors"
+              >
                 {link.label}
-              </a>
+              </motion.a>
             ))}
-            <a href="#involved" className="ml-4 px-6 py-2.5 text-sm font-semibold bg-gold text-black rounded-full hover:bg-gold-light transition-colors">
+            <motion.a
+              href="#involved"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.65 }}
+              className="ml-4 px-6 py-2.5 text-sm font-semibold bg-gold text-black rounded-full hover:bg-gold-light transition-colors"
+            >
               Get Involved
-            </a>
+            </motion.a>
           </div>
 
           <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden flex flex-col gap-1.5 p-2">
@@ -49,7 +65,7 @@ export default function Navigation() {
             <motion.span animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className="w-6 h-0.5 bg-white block" />
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       <AnimatePresence>
         {menuOpen && (
