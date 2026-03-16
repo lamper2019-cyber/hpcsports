@@ -4,10 +4,10 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const steps = [
-  { num: 1, title: "Develop", desc: "ABF programs build skills, confidence, and character in young men K\u201312." },
-  { num: 2, title: "Employ", desc: "HPC hires interns and young professionals, creating real jobs and career pathways." },
-  { num: 3, title: "Represent", desc: "HPC manages NIL deals for student athletes, generating revenue through brand partnerships." },
-  { num: 4, title: "Reinvest", desc: "HPC helps expand ABF\u2019s opportunities, bringing programs to more schools and more students." },
+  { num: 1, title: "Develop", desc: "We grow young men through ABF programs." },
+  { num: 2, title: "Employ", desc: "We hire from our own community." },
+  { num: 3, title: "Represent", desc: "We manage NIL deals for student athletes." },
+  { num: 4, title: "Reinvest", desc: "We put it back into more programs and more students." },
 ];
 
 export default function TheCycle() {
