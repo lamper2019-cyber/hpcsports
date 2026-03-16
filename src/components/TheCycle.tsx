@@ -59,8 +59,8 @@ export default function TheCycle() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col items-center"
         >
-          {/* Pill nodes row */}
-          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-0">
+          {/* Pill nodes row — always one line */}
+          <div className="grid grid-cols-4 gap-2 sm:gap-0 w-full max-w-4xl">
             {steps.map((step, i) => {
               const isActive = i === active;
               return (
@@ -68,40 +68,40 @@ export default function TheCycle() {
                   {/* Node */}
                   <motion.div
                     animate={{
-                      scale: isActive ? 1.06 : 1,
+                      scale: isActive ? 1.05 : 1,
                       boxShadow: isActive
                         ? "0 0 40px rgba(200,152,46,0.45), 0 0 80px rgba(200,152,46,0.2)"
                         : "0 0 0px rgba(200,152,46,0)",
                     }}
                     transition={{ duration: 0.5 }}
-                    className={`relative flex flex-col items-center justify-center rounded-2xl px-6 py-5 sm:px-10 sm:py-7 border transition-all duration-500 cursor-default ${
+                    className={`relative flex flex-col items-center justify-center rounded-2xl w-full py-5 sm:py-7 border transition-all duration-500 cursor-default ${
                       isActive
                         ? "bg-gold/15 border-gold/50"
                         : "bg-navy-light/50 border-white/15"
                     }`}
                   >
-                    <span className={`text-xs sm:text-sm font-bold tracking-widest mb-1.5 transition-colors duration-500 ${isActive ? "text-gold" : "text-white/50"}`}>
+                    <span className={`text-[10px] sm:text-xs font-bold tracking-widest mb-1.5 transition-colors duration-500 ${isActive ? "text-gold" : "text-white/50"}`}>
                       {String(step.num).padStart(2, "0")}
                     </span>
-                    <span className={`text-lg sm:text-xl lg:text-2xl font-bold transition-colors duration-500 ${isActive ? "text-white" : "text-white/70"}`}>
+                    <span className={`text-sm sm:text-lg lg:text-xl font-bold transition-colors duration-500 ${isActive ? "text-white" : "text-white/70"}`}>
                       {step.title}
                     </span>
                   </motion.div>
 
                   {/* Arrow connector */}
                   {i < 3 && (
-                    <div className="hidden sm:flex items-center px-3 sm:px-4 lg:px-5">
+                    <div className="hidden sm:flex items-center flex-shrink-0 px-2 lg:px-3">
                       <motion.svg
-                        width="32"
-                        height="16"
-                        viewBox="0 0 32 16"
+                        width="24"
+                        height="12"
+                        viewBox="0 0 24 12"
                         fill="none"
                         animate={{
                           opacity: i === active ? 1 : 0.3,
                         }}
                         transition={{ duration: 0.5 }}
                       >
-                        <path d="M0 8h26M22 2l6 6-6 6" stroke={i === active ? "#E0B94E" : "#ffffff"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M0 6h18M15 1l5 5-5 5" stroke={i === active ? "#E0B94E" : "#ffffff"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </motion.svg>
                     </div>
                   )}
